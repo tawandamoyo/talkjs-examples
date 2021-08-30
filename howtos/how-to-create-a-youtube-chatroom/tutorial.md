@@ -1,4 +1,4 @@
-## How to Create a Chatroom with Multiple Users Using TalkJS (Inspired by Youtube live)
+# How to Create a Chatroom with Multiple Users Using TalkJS (Inspired by Youtube live)
 
 One of the many use cases of TalkJS is in education. TalkJS allows you to quickly embed chat and chat rooms in your elearning platform.
 
@@ -6,17 +6,17 @@ Let us imagine you are running an online class on cooking, where you deliver les
 
 Let's get started.
 
-### Setting Up Our Project
+## Setting Up Our Project
 
 We need to do the following:
 
-1. Create a group conversation
-2. Create role(s)
-3. Create and customize our theme for the role(s)
+1. Create a group conversation.
+2. Create role(s).
+3. Create and customize our theme for the role(s).
 
-### Creating a group conversation
+## Creating a group conversation
 
-First we'll create a group conversation with multiple users. This is covered in the [Group Chats docs](https://talkjs.com/docs/Features/Group_Chats/). Remember to use your TalkJS appId, this is found in the dashboard. You may want to add the `photoUrl` property to each user so they get an avatar. Free images can be found on places like [pexels](https://pexels.com), [unsplash](https://unsplash.com) etc.
+First we'll create a group conversation with multiple users. This is covered in the [Group Chats docs](https://talkjs.com/docs/Features/Group_Chats/). Remember to use your TalkJS appId, this is found in the [dashboard](https://talkjs.com/dashboard). You may want to add the `photoUrl` property to each user so they get an avatar. Free images can be found on places like [pexels](https://pexels.com), [unsplash](https://unsplash.com) etc.
 
 We can specify a `subject` using `session.setAttributes`. We then use the chatbox UI mode to render our chat:
 
@@ -36,9 +36,9 @@ Our chat will look like this:
 ![default chat](./images/default.png)
 
 
-### Creating Roles
+## Creating Roles
 
-Now we need to create roles for our users in the [dashboard](https://talkjs.com/dashboard). In the header of the dashboard, click on **Roles** and add a new role. You can name this however you wish, for example "youtube"/
+Now we need to create roles for our users in the dashboard. In the header of the dashboard, click on **Roles** and add a new role. You can name this whatever you want, for example "youtube".
 
 ![Create Role](./images/create_role.png)
 
@@ -55,7 +55,7 @@ var me = new Talk.User({
 
 ....
 
-var user1 = new Talk.User({
+var other1 = new Talk.User({
     id: "234567",
     name: "Alice",
     email: "alice@example.com",
@@ -65,11 +65,11 @@ var user1 = new Talk.User({
 
 ```
 
-## Activating a theme
+### Activating a theme
 
-The theme that is used to display a TalkJS UI depends on the current user's role. If no role is set, the default theme is used.
+The theme that is used to display a TalkJS chat UI depends on the current user's role. If no role is set, the default theme is used.
 
-To configure a theme for a role, go to dashboard, and click Roles, then create or select a role and scroll down to the "UI Theme" section.
+To configure a theme for a role, go to dashboard, and click Roles, then create or select a role and scroll down to the "UI Theme" section and click on edit.
 
 ![edit role](./images/edit_role.png)
 
@@ -87,7 +87,8 @@ Now that we have our role all set up, we can customise our layout to look better
 
 Most of the edits will be done in the `UserMessage` part of the Theme Editor.
 
-#### The `UserMessage` Component
+
+### The `UserMessage` Component
 
 In the Theme Editor, we navigate to the `UserMessage` component, this is where most of the code for our UI lives.
 
@@ -114,7 +115,7 @@ with:
 ```
 The code above changes the color of author names from random to gray.
 
-To have all messages appear on the left side of the chatbox we need to find the `.message-row.by-me` class and delete it or remove the `flex-direction` property.
+To have all the messages appear on the left side of the chatbox we need to find the `.message-row.by-me` class and delete it or remove the `flex-direction` property.
 
 Our chat will look like this:
 
@@ -122,9 +123,9 @@ Our chat will look like this:
 
 We have made some progress, but we still need to remove the chat bubbles backgrounds and also clean up the header.
 
-Still in the `UserMessage` component, we find the class `.by-me.message` and delete `border-color` and `background-color` properties. This will make the chat backgrounds uniform. Also change the `color` property to match the default text, in this case black.
+Still in the `UserMessage` component, we find the class `.by-me.message` and delete the `border-color` and `background-color` properties. We also change the `color` property to match the default text, in this case black.
 
-We need to remove the chat bubble styling, and to do that we go into the `message` class and make a couple of edits. We delete `background-color`, `border-style` and `border-radius` and `border-width` leaving the `.message` class like this:
+We need to remove the chat bubble styling, and to do that we go into the `.message` class and make a couple of edits. We delete `background-color`, `border-style`, `border-radius` and `border-width` leaving the `.message` class like this:
 
 ```
 .message {
@@ -167,4 +168,4 @@ Our chat UI now looks like this:
 
 So there we have it, our final chatroom inspired somewhat by Youtube built using TalkJS API. 
 
-You can further customise it, including adding [unread message counters](), changing fonts, [defining user permissions]() and more, all while using the Theme Editor and the TalkJS API. TalkJS is extremely flexible and allows you to build many different kinds of layouts in a short time.
+You can further customise it, including adding [unread message counters](https://talkjs.com/resources/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat/), changing fonts and more, all while using the Theme Editor and the TalkJS API. TalkJS is extremely flexible and allows you to build many different kinds of layouts in a short time.
