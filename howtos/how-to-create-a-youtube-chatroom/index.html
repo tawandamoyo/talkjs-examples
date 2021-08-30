@@ -33,7 +33,7 @@
                 role: "youtube"
             });
 
-            var user1 = new Talk.User({
+            var other1 = new Talk.User({
                 id: "654321",
                 name: "Sebastian",
                 email: "sebastian@example.com",
@@ -41,7 +41,7 @@
                 role: "youtube"
             });
 
-            var user2 = new Talk.User({
+            var other2 = new Talk.User({
                 id: "234567",
                 name: "Jane",
                 email: "jane@example.com",
@@ -49,7 +49,7 @@
                 role: "youtube"
             });
 
-            var user3 = new Talk.User({
+            var other3 = new Talk.User({
                 id: "345678",
                 name: "Jon",
                 email: "jon@example.com",
@@ -64,9 +64,9 @@
 
             var conversation = window.talkSession.getOrCreateConversation("cooking");
             conversation.setParticipant(me);
-            conversation.setParticipant(user1);
-            conversation.setParticipant(user2);
-            conversation.setParticipant(user3);
+            conversation.setParticipant(other1);
+            conversation.setParticipant(other2);
+            conversation.setParticipant(other3);
 
             conversation.setAttributes({
                 subject: "Cooking With Alice"
