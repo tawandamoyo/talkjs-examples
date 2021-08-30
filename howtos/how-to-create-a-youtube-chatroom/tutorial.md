@@ -33,7 +33,7 @@ Talk.ready.then(function() {
 
 Our chat will look like this:
 
-![default chat](./images/default.png)
+![default chat](./images/initial2.png)
 
 
 ## Creating Roles
@@ -81,20 +81,55 @@ Now that we have our role all set up, we can customise our layout to look better
 ![youtube](./images/youtube.png)
 
 ### Things To Do
-- Have all messages on the left side and to show a timestamp
+- Change Font to Youtube's font
+- Remove rounded corners from the chatbox
+- Remove Avatar and group member names 
+- Change header background color to white
+- Have all messages on the left side and remove timestamp
 - Remove the backgrounds on chat bubbles
-- Make admin/instructor's message to be prominent
+- Display message text next to the username
+- Reduce gap between messages
 
-Most of the edits will be done in the `UserMessage` part of the Theme Editor.
+#### The `Chatbox` Layout
+We start by customizing the whole chatbox to get it closer to the Youtube one. 
+The first thing we'll do is change the font to Roboto. So in our **Theme Editor** we navigate to **Layouts** >> **Global** and change the font to Roboto.
 
+In the **Panels** section of **Layouts** we can delete the  value in the `borderRadius` field or set it to zero to remove the rounded corners.
+
+We also have to give the whole Chatbox a faint grey background, (#f9f9f9), and change the **Panel Footer** to a **backgroundColor** of white (#fff).
+
+![panel-edit](./images/panel.png)
+
+#### The `ChatHeader` Component
+
+The ChatHeader component contains the UI code for the chatbox or inbox header. We can delete the following lines 38-40, to get rid of the avatar :
+
+```
+<div class="image">
+    <ConversationImage conversation="{{conversation }}" />
+</div>
+
+```
+
+To remove the user lists we need to delete line 41:
+
+```
+<div class="subtitle">{{ names }}</div>
+
+```
+We then scroll down to the `.header` class and and change the background-color to #FFF (white) from the default gray and add then give it a `border-bottom` of `1px solid #FAFAFA`. This gives the header a faint gray bottom border.
+
+Our chatbox panel now looks like so:
+
+![panel-update](./images/panel-update.png)
 
 ### The `UserMessage` Component
 
-In the Theme Editor, we navigate to the `UserMessage` component, this is where most of the code for our UI lives.
+In the Theme Editor, we navigate to the **UserMessage** component, this is where most of the code for our UI lives.
 
-We want all our messages to be on the left side and to show a time stamp.
+We want all our messages to be on the left side. For all messages to appear on the left side of the chatbox we need to find the `.message-row.by-me` class (line 90) and delete it or remove the `flex-direction` property.
 
-Replace lines 67 -71:
+We then replace lines 67 -71:
 
 ```
 <div t:if="{{ sender.isMe == false and conversation.others.length > 1 }}"
@@ -108,64 +143,80 @@ with:
 
 ```
 <div t:if="{{ conversation.others.length > 0 }}" class="message-author"
-    style="color: gray; font-size: 14px">
-   {{ sender.name }} <span class = "time-sent"> {{ timestamp |  date: "%H:%m %p"}}</span>
+    style="color: gray; font-size: 13px">
+   {{ sender.name }}
 </div>
 
 ```
-The code above changes the color of author names from random to gray.
+This changes the randomly assigned username colors to a fixed gray one and sets a font size of 13px.
 
-To have all the messages appear on the left side of the chatbox we need to find the `.message-row.by-me` class and delete it or remove the `flex-direction` property.
+We then remove the timestamps and status ticks from the chats by navigating to line 73 and deleting `timestamp="{{ timestamp }}" floatTimestamp="auto" showStatus="{{ sender.isMe }}"`.
+```
+<MessageBody body="{{ body }}" timestamp="{{ timestamp }}" floatTimestamp="auto" showStatus="{{ sender.isMe }}" isLongEmailMessage="{{isLongEmailMessage}}" />
+```
 
 Our chat will look like this:
 
 ![Intermediate](./images/intermediate.png).
 
-We have made some progress, but we still need to remove the chat bubbles backgrounds and also clean up the header.
+We have made some progress, but we still need to have our texts show up next to the avatar like on Youtube, and remove the chat bubble backgrounds.
 
-Still in the `UserMessage` component, we find the class `.by-me.message` and delete the `border-color` and `background-color` properties. We also change the `color` property to match the default text, in this case black.
-
-We need to remove the chat bubble styling, and to do that we go into the `.message` class and make a couple of edits. We delete `background-color`, `border-style`, `border-radius` and `border-width` leaving the `.message` class like this:
+To further customise the appearance of our messages, we go to the `.message` class and add the following:
 
 ```
+display: flex;
+```
+
+You also need to remove the border properties, so delete the associated border properties, ie `border-radius`, `border-width` and `border-style`. Also delete `background-color`. The message class should look like so:
+
+```
+
 .message {
     white-space: normal;
     overflow: hidden;
-    border-radius: 1.5rem;
     word-wrap: break-word;
     position: relative;
     display: inline-block;
     max-width: calc(100% - 6rem - 0.25rem - 0.25rem);
     border-color: #E7ECEE;
     color: #111;
+    display: flex;
 }
+
 ```
 
-On Youtube live the host's username has a yellow background, making their messages more visible. So we can add new property `background-color: yellow`, under the `.by-me.message` class to have the messages you send show as yellow. 
+Still in the `UserMessage` component, we find the class `.by-me.message` and delete the `border-color` and `background-color` properties. We also change the `color` property to match the default text, in this case  a shade of black (#111).
 
+Edit the `.message-row`class to: 
+
+```
+margin-bottom: 0.5rem;
+margin-top: 0.5rem;
+display: flex;
+
+````
+
+
+Our Chat UI will look like this: 
 
 ![almost](./images/almost.png)
 
-We are almost done, all that's left is to change the header color to white and get rid of the avatar
-
-### The `ChatHeader` Component
-
-The ChatHeader component contains the UI code for the chatbox or inbox header. We can delete the following lines 38-40, to get rid of the avatar :
-
-```
-<div class="image">
-    <ConversationImage conversation="{{conversation }}" />
-</div>
-
-```
-We then scroll down to the `.header` class and and change the background-color to #FFF and add then give it a `border-bottom` of `1px solid #FAFAFA`. This gives the header a faint gray bottom border.
 
 ## Wrapping Up
 
-Our chat UI now looks like this:
+We need to add a few final tweaks to move our messages closer to the usernames. For this we navigate to the **MessageBody** subcomponent and change the `.text` class `padding` property to 
+
+```
+.text {
+    padding: 0.75rem 0 0 0;
+}
+
+Lastly we can go to the **Avatar** top level component and change the `.avatar` width and height to 2.5rem to make the avatars a little smaller.
+
+At which point our chat UI would look like this.
 
 ![final](./images/final.png)
 
 So there we have it, our final chatroom inspired somewhat by Youtube built using TalkJS API. 
 
-You can further customise it, including adding [unread message counters](https://talkjs.com/resources/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat/), changing fonts and more, all while using the Theme Editor and the TalkJS API. TalkJS is extremely flexible and allows you to build many different kinds of layouts in a short time.
+You can further customise it to achieve your desired look, including adding [unread message counters](https://talkjs.com/resources/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat/), changing fonts and more, all while using the Theme Editor and the TalkJS API. TalkJS is extremely flexible and allows you to build many different kinds of layouts in a short time.
