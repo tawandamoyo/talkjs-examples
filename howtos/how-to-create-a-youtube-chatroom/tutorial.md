@@ -208,11 +208,13 @@ We need to add a few final tweaks to move our messages closer to the usernames. 
 
 ```
 .text {
-    padding: 0.75rem 0 0 0;
+    padding: 0.5rem 0 0 0;
 }
 ```
 
-Lastly we can go to the **Avatar** top level component and change the `.avatar` width and height to 2.5rem to make the avatars a little smaller.
+We also need to delete the `.by-other .message` class to better align the messages.
+
+Lastly we can go to the **Avatar** top level component and change the `.avatar` width and height to 2rem to make the avatars a little smaller.
 
 At which point our chat UI would look like this:
 
