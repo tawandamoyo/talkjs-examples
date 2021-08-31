@@ -2,7 +2,7 @@
 
 One of the many use cases of TalkJS is in education. TalkJS allows you to quickly embed chat and chat rooms in your elearning platform.
 
-Let us imagine you are running an online class on cooking, where you deliver lessons via video, like Youtube. You might need a real time chat that allows your students to discuss as they follow along. In this tutorial we'll show how to build a group chat feature inspired by Youtube Live using the TalkJS API and The Theme Editor.
+Let us imagine you are running an online class on cooking, where you deliver livelessons via video, like Youtube. You might need a real time chat that allows your students to discuss as they follow along. In this tutorial we'll show how to build a group chat feature inspired by Youtube Live using the TalkJS API and The Theme Editor.
 
 Let's get started.
 
@@ -117,7 +117,7 @@ To remove the user lists we need to delete line 41:
 <div class="subtitle">{{ names }}</div>
 
 ```
-We then scroll down to the `.header` class and and change the background-color to #FFF (white) from the default gray and add then give it a `border-bottom` of `1px solid #FAFAFA`. This gives the header a faint gray bottom border.
+We then scroll down to the `.header` class and and change the background-color to #FFF (white) from the default gray and then add a `border-bottom` of `1px solid #FAFAFA`. This gives the header a faint gray bottom border.
 
 Our chatbox panel now looks like so:
 
@@ -161,13 +161,13 @@ Our chat will look like this:
 
 We have made some progress, but we still need to have our texts show up next to the avatar like on Youtube, and remove the chat bubble backgrounds.
 
-To further customise the appearance of our messages, we go to the `.message` class and add the following:
+To have our messages float besides the username, we go to the `.message` class and add the following:
 
 ```
 display: flex;
 ```
 
-You also need to remove the border properties, so delete the associated border properties, ie `border-radius`, `border-width` and `border-style`. Also delete `background-color`. The message class should look like so:
+We also need to remove the border properties, so we delete the associated border properties, ie `border-radius`, `border-width` and `border-style`. Also delete `background-color`. The message class should look like so:
 
 ```
 
@@ -187,7 +187,7 @@ You also need to remove the border properties, so delete the associated border p
 
 Still in the `UserMessage` component, we find the class `.by-me.message` and delete the `border-color` and `background-color` properties. We also change the `color` property to match the default text, in this case  a shade of black (#111).
 
-Edit the `.message-row`class to: 
+Edit the `.message-row` class to: 
 
 ```
 margin-bottom: 0.5rem;
@@ -210,10 +210,12 @@ We need to add a few final tweaks to move our messages closer to the usernames. 
 .text {
     padding: 0.75rem 0 0 0;
 }
+```
 
 Lastly we can go to the **Avatar** top level component and change the `.avatar` width and height to 2.5rem to make the avatars a little smaller.
 
-At which point our chat UI would look like this.
+At which point our chat UI would look like this:
+
 
 ![final](./images/final.png)
 
