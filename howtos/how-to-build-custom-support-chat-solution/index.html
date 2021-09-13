@@ -21,6 +21,42 @@
     </div>
 
     <script>
+        Talk.ready.then(function() {
+            var me = new Talk.User({
+                id: "103489",
+                name: "Global Web Hosts",
+                email: "global@example.com",
+                welcomeMessage: "How can we help, we're usually online during working hours CET"
+            });
+            var other = new Talk.User({
+                id: "854821",
+                name: "Sebastian",
+                email: "sebastian@example.com",
+            });
+            var other1 = new Talk.User({
+                id: "657321",
+                name: "Mat",
+                email: "mat@example.com",
+            });
+            var other2 = new Talk.User({
+                id: "654391",
+                name: "Jon",
+                email: "jon@example.com",
+            });
+            window.talkSession = new Talk.Session({
+                appId: "tQWG4Gnl",
+                me: me
+            });
+
+            var conversation = talkSession.getOrCreateConversation(
+                Talk.oneOnOneId(me, other)
+            );
+            conversation.setParticipant(me);
+            conversation.setParticipant(other);
+        
+            var inbox = talkSession.createInbox({ selected: conversation });
+            inbox.mount(document.getElementById("talkjs-container"));
+        });
         
     </script>
 </body>
