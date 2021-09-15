@@ -7,6 +7,8 @@
     <title>Live Support</title>
 </head>
 <body>
+
+    <h1>Live Support</h1>
     <!-- minified snippet to load TalkJS without delaying your page -->
     <script>
         (function(t,a,l,k,j,s){
@@ -23,29 +25,19 @@
     <script>
         Talk.ready.then(function() {
             var me = new Talk.User({
-                id: "103489",
-                name: "Global Web Hosts",
-                email: "global@example.com",
-                welcomeMessage: "How can we help, we're usually online during working hours CET"
+                id: "139882",
+                name: "Alice",
+                email: "alice@example.com",
+                photoUrl: "./images/alice.jpeg"
             });
             var other = new Talk.User({
-                id: "854821",
+                id: "854791",
                 name: "Sebastian",
                 email: "sebastian@example.com",
             });
-            var other1 = new Talk.User({
-                id: "657321",
-                name: "Mat",
-                email: "mat@example.com",
-            });
-            var other2 = new Talk.User({
-                id: "654391",
-                name: "Jon",
-                email: "jon@example.com",
-            });
             window.talkSession = new Talk.Session({
-                appId: "tQWG4Gnl",
-                me: me
+                appId: "YOUR_APP_ID",
+                me: other
             });
 
             var conversation = talkSession.getOrCreateConversation(
@@ -53,11 +45,21 @@
             );
             conversation.setParticipant(me);
             conversation.setParticipant(other);
-        
-            var inbox = talkSession.createInbox({ selected: conversation });
-            inbox.mount(document.getElementById("talkjs-container"));
+
+            conversation.setAttributes({
+                subject: "Global Web Hosts",
+                photoUrl: ",/images/logo.jpg",
+                welcomeMessages: ["Hi, welcome. We are usually welcome during working hours but feel free to leave a message at any time", "You can also read our <http://example.com|docs>"]
+
+            })
+
+            const chatPopup = talkSession.createPopup(conversation, {
+    keepOpen: false
+});
+chatPopup.mount({ show: true }); 
+
         });
-        
+
     </script>
 </body>
 </html>
