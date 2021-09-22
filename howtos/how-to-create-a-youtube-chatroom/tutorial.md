@@ -1,8 +1,8 @@
-# How to Create a Chatroom with Multiple Users Using TalkJS (Inspired by Youtube live)
+# How to build a live comments section similar to Youtube Live
 
-One of the many use cases of TalkJS is in education. TalkJS allows you to quickly embed chat and chat rooms in your elearning platform.
+One of the many use cases of TalkJS is in education. TalkJS allows you to quickly embed chat and chat rooms in your elearning platform. With TalkJS you can utilize the group chat feature to have a chat box with live comments.
 
-Let us imagine you are running an online class on cooking, where you deliver live lessons via video, like Youtube. You might need a real time chat that allows your students to discuss as they follow along. In this tutorial we'll show how to build a group chat feature inspired by Youtube Live using the TalkJS API and The Theme Editor.
+Let us imagine you are running an online class on cooking, where you deliver live lessons via video, like Youtube. You might need a real time chat that allows your students to comment in real-time as they follow along. In this tutorial we'll show how to build a group chat with live comments inspired by Youtube Live using the TalkJS API and The Theme Editor.
 
 Let's get started.
 
@@ -125,9 +125,9 @@ Our chatbox panel now looks like so:
 
 ### The `UserMessage` Component
 
-In the Theme Editor, we navigate to the **UserMessage** component, this is where most of the code for our UI lives.
+In the Theme Editor, we navigate to the **UserMessage** component. This is where most of the code for our UI lives.
 
-We want all our messages to be on the left side. For all messages to appear on the left side of the chatbox we need to find the `.message-row.by-me` class (line 90) and delete it or remove the `flex-direction` property.
+We want all our messages to be on the left side. To achieve this we find the `.message-row.by-me` class (line 90) and delete it or remove the `flex-direction` property.
 
 We then replace lines 67 -71:
 
@@ -167,7 +167,7 @@ To have our messages float besides the username, we go to the `.message` class a
 display: flex;
 ```
 
-We also need to remove the border properties, so we delete the associated border properties, ie `border-radius`, `border-width` and `border-style`. Also delete `background-color`. The message class should look like so:
+We also want to remove the border properties, so we delete the associated border properties, ie `border-radius`, `border-width` and `border-style`. We also delete `background-color`. The message class should look like so:
 
 ```
 
@@ -204,7 +204,7 @@ Our Chat UI will look like this:
 
 ## Wrapping Up
 
-We need to add a few final tweaks to move our messages closer to the usernames. For this we navigate to the **MessageBody** subcomponent and change the `.text` class `padding` property to 
+We need to do a few final tweaks to move our messages closer to the usernames. For this we navigate to the **MessageBody** subcomponent and change the `.text` class `padding` property to 
 
 ```
 .text {
@@ -221,6 +221,6 @@ At which point our chat UI would look like this:
 
 ![final](./images/final.png)
 
-So there we have it, our final chatroom inspired somewhat by Youtube built using TalkJS API. 
+So there we have it, our final live comments chatroom inspired by Youtube and built using the TalkJS API. 
 
-You can further customise it to achieve your desired look, including adding [unread message counters](https://talkjs.com/resources/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat/), changing fonts and more, all while using the Theme Editor and the TalkJS API. TalkJS is extremely flexible and allows you to build many different kinds of layouts in a short time.
+You can further customise it to achieve your desired look, including adding [unread message counters](https://talkjs.com/resources/how-to-add-a-real-time-unread-conversation-counter-to-a-talkjs-chat/), changing fonts and more, or even make it look like [WhatsApp](https://talkjs.com/resources/how-to-build-a-chat-app-that-looks-like-whatsapp-with-the-talkjs-chat-api/) or [Discord](https://talkjs.com/resources/how-to-create-a-chat-similar-to-discord-with-talkjs/) all while using the Theme Editor and the TalkJS API. TalkJS is extremely flexible and allows you to build many different kinds of layouts in a short time.
