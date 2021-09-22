@@ -1,27 +1,27 @@
 # How to build a custom support chat solution with TalkJS
 
-TalkJS is a highly customizable chat API that allows developers to build chat experiences quickly, in a matter of hours instead of weeks. TalkJS comes with a highly configurable, pre-built UI which can be styled and tweaked to meet various use cases. In this tutorial we will build a custom live chat solution with TalkJS.
+TalkJS is a highly customizable chat API that allows developers to build chat experiences quickly. With TalkJS you can have a chat solution up and running in a matter of hours instead of weeks. TalkJS comes with a highly configurable, pre-built UI which can be styled and tweaked to meet various use cases. In this tutorial we will build a custom live chat solution with TalkJS.
 
 
 ## Introduction
 
 TalkJS can be used to build a custom chat solution for communicating with your clients. In fact, we use such a tool here at TalkJS.
 
-We are going to build a chat that looks like the one you see when you visit the TalkJS website.
+We are going to build a chat that looks like the one you see when you visit the TalkJS website. It's shown below.
 
-![TalkJsChat](./images/talkjschat.png)
+![talkJsChat](./images/talkjschat.png)
 
-## Things to Do
-- Setting up our chat
-- Adding features
-- Styling the chat
+## Things to Do:
+- Set up our chat
+- Add features to our chat
+- Style our chat
 
 ## Setting up our chat
 
-To set up our chat we will follow the [Getting Started](https://talkjs.com/docs/Getting_Started/) instructions in the Docs. This gives us a working inbox which we can then customize. Remember to use your TalkJS appId, this is found in the [dashboard](https://talkjs.com/dashboard).
+To set up our chat we will follow the [Getting Started](https://talkjs.com/docs/Getting_Started/) instructions in the Docs. This gives us a working inbox which we can then customize. Remember to use your TalkJS **appId**, this is found in the [dashboard](https://talkjs.com/dashboard). Without the TalkJS **appId** the chat will not load. 
 
 ### Overview
-If you are new to TalkJS this section quickly goes over what we've done.
+If you are new to TalkJS this section quickly goes over what we've done so far.
 
 First we embed the script for the TalkJS API in our app. This loads the TalkJS API from the CDN. We also specify a div where the chatbox will be rendered once it's fetched from the CDN.
 
@@ -29,7 +29,7 @@ We then use another script to initiate our chat. This involves defining our user
 
 We create another user, to whom Alice will talk to, and then create a conversation between the two using a unique ID. Once the conversation is created, we set the participants and then create the chatbox for that conversation. After the chatbox has been created, we mount it inside the div with the id ‘talkjs-container’.
 
-In this scenario, Sebastian is the person to whom we are talking to. In production, he would be a client who wants to chat with the service provider.
+In this case, Sebastian is the person to whom we are talking to. In production, he would be a client who wants to chat with the service provider.
 
 Lastly we create a variable to hold our chatbox and then mount it.
 
@@ -56,17 +56,17 @@ var me = new Talk.User({
 ```
 We also want to add a default message that a customer sees when they open the chat, for example containing a link to docs, availability or other resources. ( Such as you see on the TalkJS livechat). 
 
-To do this we use the `setAttributes` method. [`Session.setAttributes`]() can also be used to set a subject, and even a display picture of the whole chat, as opposed to the profile pictures on individual participants.
+To do this we use the `setAttributes` method. [ConversationBuilder.setAttributes](https://talkjs.com/docs/Reference/JavaScript_Chat_SDK/ConversationBuilder/#ConversationBuilder__setAttributes) can also be used to set a subject, and even a display picture of the whole chat, as opposed to the profile pictures on individual participants.
 
 So we can add the following code:
 
 ```
 conversation.setAttributes({
     subject: "Team TalkJS",
-    photoUrl: "https://talkjs.com/images/logo.jpg",
+    photoUrl: "https://talkjs.com/images/logo.jpg", // Should be an absolute path
     welcomeMessages: [
         "Hi, welcome. We are usually online during working hours but feel free to leave a message at any time.",
-        "You can also check our <http://example.com|docs>" 
+        "You can also check our <https://example.com/docs|docs>" 
     ]
 })
 
@@ -92,11 +92,11 @@ var other2 = new Talk.User({
 
 ```
 
-After simulating a couple of conversations we can have a screen like this:
+After simulating a couple of conversations we will have a screen like this:
 
 ![ChatConvos](images/chatconvos.png).
 
-Additionally we want to allow customers to send attachments. These attachments are tied to user Roles, meaning you can allow certain groups of users to send attachments, while forbidding others. So we navigate to the dashboard and create a new role, let's call it **customer** and then tick the file sharing box.
+Additionally we want to allow customers to send attachments. These attachments are tied to user Roles, meaning you can allow certain groups of users to send attachments, while forbidding others. So we navigate to the dashboard and create a new role, let's call it **customer** and then make sure the **Allow file sharing** box is marked.
 
 ![Role](./images/role.png)
 
@@ -116,7 +116,7 @@ Our chatbox will now have a small `+` button on the typing field that allows the
 
 ![AttachFiles](./images/attach.png)
 
-By default our chat is an Inbox UI panel. However for most customer support livechats, the customer sees a popup that can be minimized. We want to implement this popup for the customer facing side of our app, while maintaining the inbox interface for the support stuff.
+By default our chat is an Inbox UI panel. However for most customer support livechats, the customer sees a popup that can be minimized. We want to implement this popup for the customer facing side of our app, while maintaining the inbox interface for the support staff.
 
 To implement the popup interface we use `Session.createPopup` to create it, and then call it using `mount`.
 
@@ -129,9 +129,7 @@ inbox.mount(document.getElementById('talkjs-container'));
 with: 
 
 ```
-const chatPopup = talkSession.createPopup(conversation, {
-    keepOpen: false
-});
+const chatPopup = talkSession.createPopup(conversation);
 chatPopup.mount({ show: true }); 
 
 ```
@@ -174,11 +172,10 @@ The service provider backend is still an inbox with the ability to support multi
 
 ![backend](./images/backend.png)
 
-We have only scratched the surface of what is possible using the Theme Editor, many more possibilities exist. For example, one can style it to look like [WhatsApp](https://dev.to/talkjs/building-a-whatsapp-clone-with-talkjs-chat-api-cdf), or [Discord](https://dev.to/talkjs/how-to-create-a-chat-like-discord-with-talkjs-4660), or [Slack](https://dev.to/talkjs/how-to-create-a-slack-like-chatbox-with-talkjs-themes-34bf).
+We have only scratched the surface of what is possible using the Theme Editor, many more possibilities exist. For example, one can style it to look like [WhatsApp](https://talkjs.com/resources/how-to-build-a-chat-app-that-looks-like-whatsapp-with-the-talkjs-chat-api/), or [Discord](https://talkjs.com/resources/how-to-create-a-chat-similar-to-discord-with-talkjs/), or [Slack](https://talkjs.com/resources/how-to-create-a-slack-like-chatbox-with-talkjs-themes/).
 
 
 ## Conclusion
 
 TalkJS is a powerful tool that can reduce development time while at the same time offering the flexibility to customize it as you like using the Theme Editor.
-
 

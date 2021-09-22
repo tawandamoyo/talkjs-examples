@@ -71,9 +71,7 @@
             var inbox = talkSession.createInbox({ selected: conversation });
             inbox.mount(document.getElementById('talkjs-container'));
 
-            const chatPopup = talkSession.createPopup(conversation, {
-                keepOpen: false
-            });
+            const chatPopup = talkSession.createPopup(conversation);
             chatPopup.mount({ show: true }); 
 
         });
