@@ -2,7 +2,7 @@
 
 One of the many use cases of TalkJS is in education. TalkJS allows you to quickly embed chat and chat rooms in your elearning platform. With TalkJS you can utilize the group chat feature to have a chat box with live comments.
 
-Let us imagine you are running an online class on cooking, where you deliver live lessons via video, like Youtube. You might need a real time chat that allows your students to comment in real-time as they follow along. In this tutorial we'll show how to build a group chat with live comments inspired by Youtube Live using the TalkJS API and The Theme Editor.
+Let us imagine you are running an online class on cooking, where you deliver live lessons via video, like Youtube. You might need a real time chat that allows your students to comment in real-time as they follow along. In this tutorial we'll show how to build a group chat with live comments inspired by Youtube Live using [TalkJS Chat API](https://talkjs.com/) and The Theme Editor.
 
 Let's get started.
 
