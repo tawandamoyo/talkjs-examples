@@ -1,9 +1,8 @@
 # How to build a custom support chat solution with TalkJS
 
-The [TalkJS API](https://talkjs.com) allows developers to build chat solutions quickly. With TalkJS you can have a chat solution up and running in a matter of hours instead of weeks. TalkJS comes with a configurable, pre-built UI which can be styled and tweaked to meet various use cases. In this tutorial we will build a custom live chat solution with TalkJS.
-
-
 ## Introduction
+
+The [TalkJS API](https://talkjs.com) allows developers to build chat solutions quickly. With TalkJS you can have a chat solution up and running in a matter of hours instead of weeks. 
 
 Developers usually use TalkJs for 1-on-1, group, or [live stream](https://talkjs.com/resources/how-to-build-a-live-comments-section-like-youtube-live/) chat, but today we're going to show you how to make a simple chat for the customer support use case.
 
