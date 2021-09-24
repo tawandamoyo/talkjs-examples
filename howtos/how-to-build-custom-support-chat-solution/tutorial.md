@@ -1,13 +1,15 @@
 # How to build a custom support chat solution with TalkJS
 
-TalkJS is a highly customizable chat API that allows developers to build chat experiences quickly. With TalkJS you can have a chat solution up and running in a matter of hours instead of weeks. TalkJS comes with a highly configurable, pre-built UI which can be styled and tweaked to meet various use cases. In this tutorial we will build a custom live chat solution with TalkJS.
+
+
+The [TalkJS API](https://talkjs.com) allows developers to build chat solutions quickly. With TalkJS you can have a chat solution up and running in a matter of hours instead of weeks. TalkJS comes with a configurable, pre-built UI which can be styled and tweaked to meet various use cases. In this tutorial we will build a custom live chat solution with TalkJS.
 
 
 ## Introduction
 
-TalkJS can be used to build a custom chat solution for communicating with your clients. In fact, we use such a tool here at TalkJS.
+Developers usually use TalkJs for 1-on-1, group, or [live stream](https://talkjs.com/resources/how-to-build-a-live-comments-section-like-youtube-live/) chat, but today we're going to show you how to make a simple chat for the customer support use case.
 
-We are going to build a chat that looks like the one you see when you visit the TalkJS website. It's shown below.
+The chat will look like the one you see when you visit the TalkJS website. It's shown below.
 
 ![talkJsChat](./images/talkjschat.png)
 
@@ -139,7 +141,7 @@ Our customer facing chat UI is now a popup that looks as shown below:
 ![chatPopup](images/popup.png)
 
 ## Styling
-TalkJS comes with a very flexible and highly configurable UI and it is up to the developer to tweak around in the Theme Editor to get a particular look. The Theme Editor allows editing using CSS. By targeting relevant  CSS classes, it is fast and easy to make edits in our layouts.
+TalkJS comes with a configurable UI and it is up to the developer to tweak it in the Theme Editor to get a particular look. The Theme Editor allows editing using CSS. By targeting relevant  CSS classes, it is fast and easy to make edits in our layouts.
 
 In this tutorial we will only apply minimal styling just to show what is possible.
 
@@ -177,5 +179,4 @@ We have only scratched the surface of what is possible using the Theme Editor, m
 
 ## Conclusion
 
-TalkJS is a powerful tool that can reduce development time while at the same time offering the flexibility to customize it as you like using the Theme Editor.
-
+Hope you had a great time coding! We know this is a pretty basic customer support setup but one that will do the job, you can get it working in a few hours and it's working pretty fine for the technical support here at TalkJS".
