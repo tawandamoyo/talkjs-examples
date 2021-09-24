@@ -2,9 +2,7 @@
 
 ## Introduction
 
-The [TalkJS API](https://talkjs.com) allows developers to build chat solutions quickly. With TalkJS you can have a chat solution up and running in a matter of hours instead of weeks. 
-
-Developers usually use TalkJs for 1-on-1, group, or [live stream](https://talkjs.com/resources/how-to-build-a-live-comments-section-like-youtube-live/) chat, but today we're going to show you how to make a simple chat for the customer support use case.
+Developers usually use [TalkJS API](https://talkjs.com) for 1-on-1, group, or [live stream](https://talkjs.com/resources/how-to-build-a-live-comments-section-like-youtube-live/) chat, but today we're going to show you how to make a simple chat for the customer support use case.
 
 The chat will look like the one you see when you visit the TalkJS website. It's shown below.
 
