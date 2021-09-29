@@ -7,3 +7,5 @@ When a tutorial related to a sample is published add a row to the table below. A
  | Title        | blog link     | dev.to link | sample |
 | ------------- | ------------- | ------------|--------|
 |How to Hide Some Chat Messages for Certain Users in a TalkJS Chat|               |[read on dev.to](https://dev.to/talkjs/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat-23g4) |[view sample code](https://github.com/SapneshNaik/talkjs-examples/tree/master/howtos/how-to-hide-some-chat-messages-for-certain-users-in-a-talkjs-chat)|
+
+| How to build a live comments section similar to Youtube Live | [read on our blog](https://talkjs.com/resources/how-to-build-a-live-comments-section-like-youtube-live/) | [read on dev.to](https://dev.to/talkjs/how-to-build-a-live-comments-section-similar-to-youtube-live-3beh) | [read on hashnode](https://talkjs.hashnode.dev/how-to-build-a-live-comments-section-similar-to-youtube-live) | [view sample code]() |
